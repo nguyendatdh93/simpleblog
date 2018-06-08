@@ -35,4 +35,18 @@ class PostController extends Controller
 
         return view('admin.post', ['posts' => $posts]);
     }
+
+    public function add()
+    {
+        $post = array(
+            'user_id'     => 2,
+            'name'        => 'tesst',
+            'content'     => 'dsdssdsd',
+            'approver_id' => 0,
+            'approved_at' => new \DateTime(),
+            'del_flg'     => 0,
+        );
+
+        $this->postRepository->create($post);
+    }
 }

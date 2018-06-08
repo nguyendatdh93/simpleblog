@@ -2,14 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class Post extends Authenticatable
 {
     use Notifiable;
 
     protected $table = 'posts';
+
+    protected $fillable = ['user_id', 'name', 'content', 'approver_id', 'approved_at', 'del_flg'];
 
     public function user()
     {

@@ -21,4 +21,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('post')->group(function () {
     Route::get('/list', 'Admin\PostController@index')->name('list_post');
+    Route::get('/add', 'Admin\PostController@add')->name('add_post');
 });
