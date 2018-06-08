@@ -31,7 +31,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = $this->postRepository->findBy(['id' => 2]);
+        $posts = $this->postRepository->all();
 
         return view('admin.post', ['posts' => $posts]);
     }
