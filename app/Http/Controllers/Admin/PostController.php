@@ -82,14 +82,25 @@ class PostController extends Controller
                 'content' => $request->get('content'),
             ]);
 
-            return redirect()->route(Post::ROUTE_LIST_POST)->with(['success' => __('post.add.success_message')]);
+            return redirect()->route(Post::ROUTE_LIST_POST)->with(['success' => __('post.add.successMessage')]);
         } else {
             $this->postRepository->update([
                 'title'   => $request->get('title'),
                 'content' => $request->get('content'),
             ], $request->get('id'));
 
-            return redirect()->route(Post::ROUTE_LIST_POST)->with(['success' => __('post.edit.success_message')]);
+            return redirect()->route(Post::ROUTE_LIST_POST)->with(['success' => __('post.edit.successMessage')]);
         }
+    }
+
+    public function remove(Request $request)
+    {
+        if (!empty($request->route('id'))) {
+            $this->postRepository->delete($request->route('id'));
+
+            return redirect()->route(Post::ROUTE_LIST_POST)->with(['success' => __('post.list.removeSuccessMessage')]);
+        }
+
+        return redirect()->route(Error::ERROR_403);
     }
 }

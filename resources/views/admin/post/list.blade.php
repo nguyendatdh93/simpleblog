@@ -25,10 +25,10 @@
                     @endif
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Post management</h2>
+                            <h2>{{ __('post.list.titleBox') }}</h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li>
-                                    <a href="{{ route(Post::ROUTE_ADD_POST) }}"><button type="button" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Add new post</button></a>
+                                    <a href="{{ route(Post::ROUTE_ADD_POST) }}"><button type="button" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> {{ __('post.list.addButton') }}</button></a>
                                 </li>
                             </ul>
                             <div class="clearfix"></div>
@@ -37,12 +37,12 @@
                             <table id="post-datatable" class="table table-striped table-bordered bulk_action">
                                 <thead>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Title</th>
-                                    <th>Author</th>
-                                    <th>Created at</th>
-                                    <th>Updated at</th>
-                                    <th>Controls</th>
+                                    <th>{{ __('post.list.id') }}</th>
+                                    <th>{{ __('post.list.title') }}</th>
+                                    <th>{{ __('post.list.author') }}</th>
+                                    <th>{{ __('post.list.createdAt') }}</th>
+                                    <th>{{ __('post.list.updatedAt') }}</th>
+                                    <th class="action">{{ __('post.list.action') }}</th>
                                 </tr>
                                 </thead>
 
@@ -59,8 +59,14 @@
                                                 <a href="{{ route(Post::ROUTE_EDIT_POST, ['id' => $post->id]) }}"><i class="fa fa-edit"></i></a>
                                             </div>
 
-                                            <div class="fa-hover col-md-3 col-sm-4 col-xs-12" data-toggle-tooltip="tooltip" title="Hooray!">
-                                                <a href="#/pencil-square-o"><i class="fa fa-trash-o"></i></a>
+                                            <div class="fa-hover col-md-3 col-sm-4 col-xs-12 btn-remove"
+                                                 data-toggle-tooltip="tooltip"
+                                                 title="Hooray!"
+                                                 data-toggle="modal"
+                                                 data-target=".modal-remove-post"
+                                                 data-id = {{ $post->id }}
+                                            >
+                                                <i class="fa fa-trash-o"></i>
                                             </div>
                                         </td>
                                     </tr>
@@ -73,12 +79,44 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade modal-remove-post" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">{{ __('post.list.confirmRemoveTitle') }}</h4>
+                </div>
+                <div class="modal-body">
+                    <h4>{{ __('post.list.confirmText') }}</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ __('post.list.noButton') }}</button>
+                    <a href="" class="btn btn-primary btn-confirm">{{ __('post.list.yesButton') }}</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('Script')
     <script>
         $(function () {
-            $('#post-datatable').dataTable();
+            $('#post-datatable').dataTable({
+                order: [ 0, 'DESC' ],
+                columnDefs: [
+                    { targets: 'action', orderable: false, width: 50}
+                ]
+            });
+        })
+        
+        $(document).on('click', '.btn-remove', function (e) {
+            var id = $(this).attr('data-id');
+            var url_remove = "{{ route(Post::ROUTE_REMOVE_POST) }}" + "/" + id;
+            $('.btn-confirm').attr("href", url_remove);
         })
     </script>
 @endsection

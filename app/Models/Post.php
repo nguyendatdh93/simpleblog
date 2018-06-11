@@ -12,6 +12,7 @@ class Post extends BaseModel
     const ROUTE_ADD_POST = 'add_post';
     const ROUTE_SAVE_POST = 'save_post';
     const ROUTE_EDIT_POST = 'edit_post';
+    const ROUTE_REMOVE_POST = 'remove_post';
 
     protected $table = 'posts';
 

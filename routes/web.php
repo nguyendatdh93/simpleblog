@@ -28,6 +28,7 @@ Route::prefix('post')->group(function () {
     Route::get('/add', 'Admin\PostController@add')->name(Post::ROUTE_ADD_POST);
     Route::post('/save', 'Admin\PostController@save')->name(Post::ROUTE_SAVE_POST);
     Route::get('/edit/{id?}', 'Admin\PostController@edit')->name(Post::ROUTE_EDIT_POST);
+    Route::get('/remove/{id?}', 'Admin\PostController@remove')->name(Post::ROUTE_REMOVE_POST);
 });
 
 // error routers
