@@ -8,6 +8,7 @@
 
 namespace App\Repositories\Eloquents;
 
+use App\Models\Post;
 use App\Repositories\Contracts\PostRepositoryInterface;
 use DB;
 use Illuminate\Container\Container as App;
@@ -21,6 +22,6 @@ class PostRepository extends Repository implements PostRepositoryInterface
      */
     public function model()
     {
-        return 'App\Models\Post';
+        return Post::class;
     }
 }
