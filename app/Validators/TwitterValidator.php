@@ -33,10 +33,10 @@ class TwitterValidator
     public function checkUserExistOnTwitterById($twitterId)
     {
         try {
-            $token_info = Auth::user()->getTokenInfoAttribute(Auth::id());
+            $tokenInfo = Auth::user()->getTokenInfoAttribute(Auth::id());
             Twitter::reconfig([
-                "token"  => $token_info->access_token,
-                "secret" => $token_info->access_token_secret,
+                "token"  => $tokenInfo->access_token,
+                "secret" => $tokenInfo->access_token_secret,
             ]);
 
             $res = Twitter::getUsers(['user_id' => $twitterId]);
