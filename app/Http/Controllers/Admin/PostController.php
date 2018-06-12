@@ -48,11 +48,18 @@ class PostController extends Controller
         return view('admin.post.list', ['posts' => $posts]);
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function add()
     {
         return view('admin.post.add');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
     public function edit(Request $request)
     {
         if (!empty($request->route('id'))) {
@@ -67,6 +74,10 @@ class PostController extends Controller
         return redirect()->route(Error::ERROR_403);
     }
 
+    /**
+     * @param Request $request
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
     public function save(Request $request)
     {
         $errors = $this->validator->validate($request);
@@ -93,6 +104,10 @@ class PostController extends Controller
         }
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function remove(Request $request)
     {
         if (!empty($request->route('id'))) {
