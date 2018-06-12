@@ -4361,3 +4361,13 @@ table thead tr th {
 .btn-remove {
   color: red;
 }
+
+.is-invalid {
+  border-color: red !important;
+}
+
+.invalid-feedback {
+  color: red;
+  margin-top: -15px;
+  display: block;
+}

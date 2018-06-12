@@ -6,6 +6,10 @@ use Validator;
 
 class PostValidator
 {
+    /**
+     * @param $request
+     * @return array
+     */
     public function validate($request)
     {
         $validator = Validator::make($request->all(), [

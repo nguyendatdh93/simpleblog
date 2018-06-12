@@ -14,13 +14,9 @@
 use App\Models\Error as Error;
 use App\Models\Post as Post;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Auth\LoginController@showLoginForm')->middleware('guest');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 // error posts
 Route::prefix('post')->group(function () {

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Error;
 use App\Models\Post;
 use App\Repositories\Contracts\PostRepositoryInterface;
-use App\Validator\PostValidator;
+use App\Validators\PostValidator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Validator;

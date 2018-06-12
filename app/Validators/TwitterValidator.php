@@ -11,6 +11,10 @@ use Twitter;
 
 class TwitterValidator
 {
+    /**
+     * @param $mediaId
+     * @return null
+     */
     public function checkMediaId($mediaId)
     {
         $res = Twitter::uploadMedia(['media' => '', 'command' => 'FINALIZE', 'media_id' => $mediaId]);
@@ -23,10 +27,10 @@ class TwitterValidator
     }
 
     /**ediaId
-     * @param $twitter_id
+     * @param $twitterId
      * @return bool
      */
-    public function checkUserExistOnTwitterById($twitter_id)
+    public function checkUserExistOnTwitterById($twitterId)
     {
         try {
             $token_info = Auth::user()->getTokenInfoAttribute(Auth::id());
@@ -35,7 +39,7 @@ class TwitterValidator
                 "secret" => $token_info->access_token_secret,
             ]);
 
-            $res = Twitter::getUsers(['user_id' => $twitter_id]);
+            $res = Twitter::getUsers(['user_id' => $twitterId]);
 
             return !empty($res);
         } catch (\Exception $exception) {
