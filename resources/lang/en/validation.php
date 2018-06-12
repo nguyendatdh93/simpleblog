@@ -93,6 +93,7 @@ return [
     'numeric'              => 'The :attribute must be a number.',
     'present'              => 'The :attribute field must be present.',
     'regex'                => 'The :attribute format is invalid.',
+    'invalid_format'       => 'The :attribute format is invalid.',
     'required'             => 'The :attribute field is required.',
     'required_if'          => 'The :attribute field is required when :other is :value.',
     'required_unless'      => 'The :attribute field is required unless :other is in :values.',
@@ -107,11 +108,15 @@ return [
         'string'  => 'The :attribute must be :size characters.',
         'array'   => 'The :attribute must contain :size items.',
     ],
-    'string'               => 'The :attribute must be a string.',
-    'timezone'             => 'The :attribute must be a valid zone.',
-    'unique'               => 'The :attribute has already been taken.',
-    'uploaded'             => 'The :attribute failed to upload.',
-    'url'                  => 'The :attribute format is invalid.',
+    'string'                        => 'The :attribute must be a string.',
+    'timezone'                      => 'The :attribute must be a valid zone.',
+    'unique'                        => 'The :attribute has already been taken.',
+    'uploaded'                      => 'The :attribute failed to upload.',
+    'url'                           => 'The :attribute format is invalid.',
+    'tweet_length'                  => 'The :attribute cannot exceed :max_length characters. You have entered :input_length characters.',
+    'twitter_id_not_existed'        => 'Twitter ID :twitter_id is not exist on the twitter',
+    'tweet_hashtag_invalid_format'  => 'The :attribute format is invalid.',
+    'twitter_hashtag_is_existed'    => 'The campaign tag was used on twitter',
 
     /*
     |--------------------------------------------------------------------------
