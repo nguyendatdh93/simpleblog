@@ -7,6 +7,9 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    const ROUTE_SETTING_TIMEZONE_FORM = 'setting_timezone_form';
+    const ROUTE_SAVE_TIMEZONE = 'save_timezone';
+
     use Notifiable;
 
     /**

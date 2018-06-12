@@ -13,7 +13,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>{{ __('post.add.titleBox') }}</h2>
+                            <h2>{{ __('setting.timezone.titleBox') }}</h2>
                             <ul class="nav navbar-right panel_toolbox">
                             </ul>
                             <div class="clearfix"></div>
@@ -22,20 +22,16 @@
 
                             <form class="form-horizontal form-label-left" novalidate action="" method="post">
                                 {{ csrf_field() }}
-                                <div class="item form-group {{ $errors->has('title') ? 'bad' : '' }}">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">{{ __('post.add.title') }} <span class="required">*</span>
+                                <div class="item form-group {{ $errors->has('timezone') ? 'bad' : '' }}">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">{{ __('setting.timezone.timezone') }}
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="title" placeholder="" required="required" type="text">
-                                        <p class="required">{{ $errors->first('title') ?? '' }}</p>
-                                    </div>
-                                </div>
-                                <div class="item form-group {{ $errors->has('content') ? 'bad' : '' }}">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">{{ __('post.add.content') }} <span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <textarea class="form-control" name="content" rows="3" placeholder=""></textarea>
-                                        <p class="required">{{ $errors->first('content') ?? '' }}</p>
+                                        <select class="select2_single form-control"  tabindex="-1">
+                                            <option></option>
+                                            <option value="Asia/Saigon">{{ __('setting.timezone.vietnam') }}</option>
+                                            <option value="HI">{{ __('setting.timezone.japan') }}</option>
+                                        </select>
+                                        <p class="required">{{ $errors->first('timezone') ?? '' }}</p>
                                     </div>
                                 </div>
                                 <div class="ln_solid"></div>
@@ -51,4 +47,19 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('Script')
+    <script src="{{ asset("/assets/vendors/moment/moment.js") }}"></script>
+    <script src="{{ asset("/assets/vendors/moment-timezone/moment-timezone.js") }}"></script>
+    <script src="{{ asset("/assets/vendors/moment-timezone/moment-timezone-with-data.js") }}"></script>
+    <script>
+        $(document).on('ready', function(){
+            var timezone = $('#timezoneInput').val();
+            if (!timezone) {
+                timezone = moment.tz.guess();
+                $('#timezoneInput').val(timezone);
+            }
+        })
+    </script>
 @endsection

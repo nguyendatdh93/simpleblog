@@ -13,6 +13,7 @@
 
 use App\Models\Error as Error;
 use App\Models\Post as Post;
+use App\Models\User as User;
 
 Route::get('/', 'Auth\LoginController@showLoginForm')->middleware('guest');
 
@@ -26,6 +27,13 @@ Route::prefix('post')->middleware('auth')->group(function () {
     Route::get('/edit/{id?}', 'Admin\PostController@edit')->name(Post::ROUTE_EDIT_POST);
     Route::get('/remove/{id?}', 'Admin\PostController@remove')->name(Post::ROUTE_REMOVE_POST);
 });
+
+// error routers
+Route::prefix('setting')->middleware('auth')->group(function () {
+    Route::get('/timezone', 'Admin\UserController@showSettingTimezoneForm')->name(User::ROUTE_SETTING_TIMEZONE_FORM);
+    Route::post('/timezone/save', 'Admin\UserController@showSettingTimezoneForm')->name(User::ROUTE_SAVE_TIMEZONE);
+});
+
 
 // error routers
 Route::prefix('error')->middleware('auth')->group(function () {

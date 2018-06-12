@@ -39,5 +39,8 @@
     "gulp-ruby-sass": "^2.0.6",
     "gulp-sass": "^4.0.1",
     "gulp-uglify": "^1.5.3"
+  },
+  "dependencies": {
+    "moment-timezone": "^0.5.17"
   }
 }

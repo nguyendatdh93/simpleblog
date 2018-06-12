@@ -73,7 +73,7 @@ abstract class Repository implements RepositoryInterface
             foreach ($this->conditions as $field => $value) {
                 if (is_array($value)) {
                     list($field, $condition, $val) = $value;
-                    $this->model = $this->model->where($field, $condition, $val);
+                    $this->model = $this->model->whereNull($field);
                 } else {
                     $this->model = $this->model->where($field, '=', $value);
                 }
@@ -124,7 +124,7 @@ abstract class Repository implements RepositoryInterface
      */
     public function delete($id)
     {
-        return $this->update(['del_flg' => 1], $id);
+        return $this->update(['deleted_at' => new \DateTime()], $id);
     }
 
     /**
@@ -203,7 +203,7 @@ abstract class Repository implements RepositoryInterface
     /**
      * @param mixed $conditions
      */
-    public function setConditions($conditions = ['del_flg' => self::NOT_DELETED])
+    public function setConditions($conditions = array(array('deleted_at', 'IS', 'NULL')))
     {
         $this->conditions = $conditions;
     }
