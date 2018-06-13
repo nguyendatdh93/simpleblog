@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+use App\Models\BaseModel as Model;
 use App\Models\Error as Error;
 use App\Models\Post as Post;
 use App\Models\User as User;

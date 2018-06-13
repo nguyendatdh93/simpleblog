@@ -11,12 +11,15 @@ namespace App\Repositories\Eloquents;
 use App\Repositories\Contracts\RepositoryInterface;
 use Illuminate\Container\Container as App;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\InteractsWithTime;
 use Mockery\Exception;
 
 abstract class Repository implements RepositoryInterface
 {
     const NOT_DELETED = 0;
     const DELETED = 1;
+
+    use InteractsWithTime;
 
     /**
      * @var
@@ -124,7 +127,7 @@ abstract class Repository implements RepositoryInterface
      */
     public function delete($id)
     {
-        return $this->update(['deleted_at' => new \DateTime()], $id);
+        return $this->update(['deleted_at' => $this->currentTime()], $id);
     }
 
     /**

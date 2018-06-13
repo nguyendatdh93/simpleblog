@@ -6,7 +6,7 @@
 
 <body class="nav-md">
 
-@section('ContentLogin')
+@section('Content')
 
 @show
 

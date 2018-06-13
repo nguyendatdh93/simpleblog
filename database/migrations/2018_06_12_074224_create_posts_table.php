@@ -18,9 +18,9 @@ class CreatePostsTable extends Migration
             $table->integer('user_id');
             $table->string('title');
             $table->text('content');
-            $table->integer('approver_id')->nullable();
-            $table->dateTime('approved_at')->nullable();
-            $table->dateTime('deleted_at')->nullable();
+            $table->bigInteger('approver_id')->nullable();
+            $table->bigInteger('approved_at')->nullable();
+            $table->bigInteger('deleted_at')->nullable();
             $table->timestamps();
         });
     }

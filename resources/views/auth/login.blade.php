@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('ContentLogin')
+@section('Content')
     <body class="login" style="background-color: #fff">
     <div>
         <a class="hiddenanchor" id="signup"></a>
