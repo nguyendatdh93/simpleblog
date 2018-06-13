@@ -11,7 +11,7 @@
                 <section class="login_content">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-                        <h1>Login</h1>
+                        <h1>{{ __('menu.logo') }}</h1>
                         <div>
                             <input type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="email" name="email" value="{{ old('email') }}" required="" />
                             @if ($errors->has('email'))
