@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -13,6 +14,8 @@ use Illuminate\Notifications\Notifiable;
 class BaseModel extends Authenticatable
 {
     use Notifiable;
+
+    public $dateFormat = 'U';
 
     /**
      * @return mixed
@@ -44,6 +47,27 @@ class BaseModel extends Authenticatable
     public function getFillable()
     {
         return $this->fillable;
+    }
+
+    /**
+     *
+     */
+    public static function boot()
+    {
+        static::creating(function($model)
+        {
+            $model->created_at = Carbon::now()->timestamp;
+        });
+
+        static::updating(function($model)
+        {
+            $model->updated_at = Carbon::now()->timestamp;
+        });
+
+        static::deleting(function($model)
+        {
+            $model->deleted_at = Carbon::now()->timestamp;
+        });
     }
 
 }

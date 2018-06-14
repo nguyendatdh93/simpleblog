@@ -9,6 +9,7 @@
 namespace App\Repositories\Eloquents;
 
 use App\Repositories\Contracts\RepositoryInterface;
+use Carbon\Carbon;
 use Illuminate\Container\Container as App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\InteractsWithTime;
@@ -127,7 +128,7 @@ abstract class Repository implements RepositoryInterface
      */
     public function delete($id)
     {
-        return $this->update(['deleted_at' => $this->currentTime()], $id);
+        return $this->update(['deleted_at' => Carbon::now()->timestamp], $id);
     }
 
     /**

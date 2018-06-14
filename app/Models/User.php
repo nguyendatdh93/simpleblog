@@ -5,12 +5,10 @@ namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends BaseModel
 {
     const ROUTE_SETTING_TIMEZONE_FORM = 'setting_timezone_form';
     const ROUTE_SAVE_TIMEZONE = 'save_timezone';
-
-    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -38,6 +36,11 @@ class User extends Authenticatable
      */
     public function posts()
     {
-        return $this->hasMany('App\Models\Post', 'user_id', 'id');
+        return $this->hasMany(Post::class, 'user_id', 'id');
+    }
+
+    public function timezone()
+    {
+        return $this->belongsTo(Timezone::class, 'id', 'user_id');
     }
 }

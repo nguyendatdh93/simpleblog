@@ -28,5 +28,7 @@
 <!-- Custom Theme Scripts -->
 <script src="{{ asset("/assets/build/js/custom.min.js") }}"></script>
 
+
 @section('Script')
+
 @show

@@ -19,9 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->integer('permission')->default(0);
-            $table->dateTime('deleted_at')->nullable();
             $table->rememberToken();
-            $table->timestamps();
+            $table->unsignedBigInteger('created_at')->nullable();
+            $table->unsignedBigInteger('updated_at')->nullable();
+            $table->unsignedBigInteger('deleted_at')->nullable();
         });
     }
 

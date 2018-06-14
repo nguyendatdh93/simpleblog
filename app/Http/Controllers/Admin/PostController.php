@@ -43,6 +43,8 @@ class PostController extends Controller
      */
     public function index()
     {
+//        $user = Auth::user();
+//        date_default_timezone_set($user->timezone->timezone);
         $posts = $this->postRepository->all();
 
         return view('admin.post.list', ['posts' => $posts]);

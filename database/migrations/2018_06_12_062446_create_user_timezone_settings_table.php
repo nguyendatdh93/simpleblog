@@ -17,8 +17,9 @@ class CreateUserTimezoneSettingsTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->string('timezone');
-            $table->dateTime('deleted_at')->nullable();
-            $table->timestamps();
+            $table->unsignedBigInteger('created_at')->nullable();
+            $table->unsignedBigInteger('updated_at')->nullable();
+            $table->unsignedBigInteger('deleted_at')->nullable();
         });
     }
 
