@@ -36,7 +36,7 @@ Route::prefix('setting')->middleware('auth')->group(function () {
 
 
 // error routers
-Route::prefix('error')->middleware('auth')->group(function () {
+Route::prefix('error')->group(function () {
     Route::get('/404', 'Error\ErrorController@page404')->name(Error::ERROR_404);
     Route::get('/403', 'Error\ErrorController@page403')->name(Error::ERROR_403);
     Route::get('/500', 'Error\ErrorController@page500')->name(Error::ERROR_500);
