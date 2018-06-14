@@ -1,7 +1,7 @@
 <!-- footer content -->
 <footer>
     <div class="pull-right">
-        Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+        {{ str_replace('_YEAR_', date('Y'), env('COPYRIGHT_TEXT_IN_FOOTER')) }}
     </div>
     <div class="clearfix"></div>
 </footer>
